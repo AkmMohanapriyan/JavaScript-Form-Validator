@@ -92,7 +92,7 @@ button:hover {
 .toggle-password {
     position: absolute;
     right: 10px;
-    top: 12px;
+    top: 48px;
     cursor: pointer;
     color: #666;
 }

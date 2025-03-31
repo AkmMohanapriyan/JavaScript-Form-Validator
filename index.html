@@ -9,28 +9,51 @@
 </head>
 <body>
     <div class="container">
+
         <h2>Registration Form</h2>
+
         <form id="registrationForm">
+            <!-- user name input-->
             <div class="form-group">
-                <input type="text" id="username" placeholder="Username" required>
+                <label for="username">User Name :</label> <br><br>
+                <input type="text" id="username" name="username" placeholder="Username" required>
                 <div class="error" id="usernameError"></div>
             </div>
+
+            <!-- email address input-->
             <div class="form-group">
-                <input type="email" id="email" placeholder="Email" required>
+                <label for="email">Email Address :</label> <br><br>
+                <input type="email" id="email" name="email" placeholder="Email" required>
                 <div class="error" id="emailError"></div>
             </div>
+
+            <!-- password input -->
             <div class="form-group">
-                <input type="password" id="password" placeholder="Password" required>
+                <label for="password">Password :</label> <br><br>
+                <input type="password" id="password" name="password" placeholder="Password" required>
                 <span class="toggle-password" id="togglePassword">Show</span>
+                <!-- strength meter -->
                 <div class="strength-meter">
                     <div class="strength-bar" id="strengthBar"></div>
                 </div>
                 <div class="error" id="passwordError"></div>
             </div>
+
+            <!-- confirm password input -->
             <div class="form-group">
-                <input type="password" id="confirmPassword" placeholder="Confirm Password" required>
+                <label for="confirmPassword">Confirm Password :</label> <br><br>
+                <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Confirm Password" required>
                 <div class="error" id="confirmPasswordError"></div>
             </div>
+
+            <!-- age input -->
+            <div class="form-group">
+                <label for="age">Age :</label> <br><br>
+                <input type="text" id="age" name="age" placeholder="Enter Your Age" required>
+                <div id="ageError" class="error">Please enter a valid age between 18 and 120.</div>
+            </div>
+
+            <!-- register button -->
             <button type="submit">Register</button>
         </form>
         <div class="success" id="successMessage">Registration Successful!</div>

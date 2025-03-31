@@ -7,11 +7,14 @@ const confirmPassword = document.getElementById('confirmPassword');
 const togglePassword = document.getElementById('togglePassword');
 const strengthBar = document.getElementById('strengthBar');
 const successMessage = document.getElementById('successMessage');
+const ageInput = document.getElementById('age');
+const ageError = document.getElementById('ageError');
 
 // Regex patterns
 const usernameRegex = /^[a-zA-Z0-9]{3,15}$/;
 const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const passwordRegex = /^(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,}$/;
+const ageRegex = /^(1[8-9]|[2-9][0-9]||100)$/;
 
 // Event Listeners
 form.addEventListener('submit', handleSubmit);
@@ -38,25 +41,37 @@ function validateForm() {
     clearError(email);
     clearError(password);
     clearError(confirmPassword);
+    clearError(age);
 
+    // username validation
     if (!usernameRegex.test(username.value)) {
         showError(username, 'Username must be 3-15 characters (letters and numbers only)');
         isValid = false;
     }
 
+    // email validation
     if (!emailRegex.test(email.value)) {
         showError(email, 'Please enter a valid email address');
         isValid = false;
     }
 
+    // password Validation
     if (!passwordRegex.test(password.value)) {
         showError(password, 'Password must be 8+ characters with uppercase, number, and special character');
         isValid = false;
     }
 
+    // confirm password Validation
     if (password.value !== confirmPassword.value) {
         showError(confirmPassword, 'Passwords do not match');
         isValid = false;
+    }
+
+    // age Validation
+    if (!ageRegex.test(ageInput.value)) {
+        showError(age, 'Please enter a valid age between 18 and 100.');
+        isValid = false;
+
     }
 
     return isValid;
@@ -73,11 +88,11 @@ function updateStrengthMeter() {
 
     strengthBar.style.width = `${Math.min(strength, 100)}%`;
     if (strength < 50) {
-        strengthBar.style.background = '#dc3545'; // Weak - Red
+        strengthBar.style.background = 'red'; // Weak - Red
     } else if (strength < 80) {
-        strengthBar.style.background = '#fd7e14'; // Medium - Orange
+        strengthBar.style.background = 'orange'; // Medium - Orange
     } else {
-        strengthBar.style.background = '#28a745'; // Strong - Green
+        strengthBar.style.background = 'green'; // Strong - Green
     }
 }
 
